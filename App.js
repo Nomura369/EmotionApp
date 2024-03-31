@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
 
-export default function App() {
+//字體尚未引入
+
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { GluestackUIProvider, StatusBar } from '@gluestack-ui/themed';
+import { config } from '@gluestack-ui/config';
+
+import Navigation from "./src/navigation/index";
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={{flex: 1}}>
+        <GluestackUIProvider config={config}>
+          <StatusBar />
+          <Navigation />
+        </GluestackUIProvider>         
+      </SafeAreaView>  
+    </SafeAreaProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
