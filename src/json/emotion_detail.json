@@ -3,7 +3,7 @@
     "data": [
         {
             "title": "happy",
-            "img": "../images/happy_.png",
+            "img_s": "https://imgur.com/e4ei9HV.png",
             "first": "開心",
             "second": "興奮",
             "third": "感恩",
@@ -14,7 +14,7 @@
         },
         {
             "title": "angry",
-            "img": "../images/angry_.png",
+            "img_s": "https://imgur.com/WhE3yKk.png",
             "first": "震怒",
             "second": "不公平",
             "third": "受冒犯",
@@ -25,7 +25,7 @@
         },
         {
             "title": "sad",
-            "img": "../images/sad_.png",
+            "img_s": "https://imgur.com/BhdE9E1.png",
             "first": "難過",
             "second": "失望",
             "third": "孤單",
@@ -36,7 +36,7 @@
         },
         {
             "title": "fear",
-            "img": "../images/fear_.png",
+            "img_s": "https://imgur.com/s6fGkVc.png",
             "first": "緊張",
             "second": "擔憂",
             "third": "不安",

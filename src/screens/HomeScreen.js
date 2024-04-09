@@ -9,7 +9,7 @@ const HomeScreen = ({ navigation }) => {
             <Button 
                 title="前往Q1"
                 color="#0080FF"
-                onPress = { () => navigation.navigate("Q1Stack") }
+                onPress = { () => navigation.navigate("Q1") }
             />
         </Center>
     );

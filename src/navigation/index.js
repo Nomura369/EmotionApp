@@ -32,8 +32,7 @@ const Navigation = () => {
 }
 
 /*Stack專區-起點*/
-// 從 Tab 連到 Q1 的導覽（記得 navigation 函式會傳給後者）
-// 先假裝從首頁連到 Q1
+// 目前順序：首頁 => Q1 => Q2(working)
 const HomeStack = () => {
     const { colors } = useTheme();
     
@@ -52,8 +51,8 @@ const HomeStack = () => {
           }}
         />
         <Stack.Screen
-          name="Q1Stack"
-          component={Q1Stack}
+          name="Q1"
+          component={Question1Screen}
           options={() => ({
             headerTransparent: true, // 使 Header 透明化
 
@@ -63,31 +62,9 @@ const HomeStack = () => {
             }, 
           })}
         />
-      </Stack.Navigator>
-    );
-  }
-//從 Q1 連到 Q2 的導覽
-const Q1Stack = () => {
-    const { colors } = useTheme();
-    const { navigation } = useNavigation();
-    
-    return (
-      <Stack.Navigator
-        screenOptions={{
-            headerTintColor: colors.character // 改變返回鍵與 Header 文字的顏色
-        }}
-      >
         <Stack.Screen
-          name="Q1"
-          component={Question1Screen}
-          options={{
-            headerShown: false, //  在上一個導覽已經設定了 Header
-          }}
-          
-        />
-        <Stack.Screen
-          name="Q2Stack" 
-          component={Question2Screen} // 以後再改成 Q2Stack 函式
+          name="Q2" 
+          component={Question2Screen}
           options={() => ({
             headerTransparent: true, // 使 Header 透明化
 
@@ -95,13 +72,6 @@ const Q1Stack = () => {
             headerTitleStyle: { //避免文字透明化沒起效，將顏色設成與背景相同
                 color: colors.bg_normal 
             },
-            /*
-            headerLeft: () => (
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <MaterialCommunityIcons name="arrow-left" size={24} color={colors.character} />
-                </TouchableOpacity>
-            ),
-            */
           })}
         />
       </Stack.Navigator>
