@@ -1,15 +1,66 @@
-/*暫時用*/
-import { Center, Text, Image } from "@gluestack-ui/themed";
+import { Center, Text, Image, VStack, FlatList } from "@gluestack-ui/themed";
+import { useTheme, useNavigation } from '@react-navigation/native';
 
-import emotionDetail from "../json/emotion_detail.json"
+import emotionData from "../json/emotions.json";
+import DetailList from "../components/DetailList";
 
-const Question2Screen = ({ route }) => { //以後會有 navigation 函式
-    const { emotion } = route.params;
-    const data = emotionDetail.data
+const Question2Screen = ({ route }) => {
+    const { colors } = useTheme();
+    const navigation = useNavigation();
+
+    const name = route.params; // 從 Q1 傳來的情緒名稱
+    
+    let emotions = emotionData.data;
+
+    // 會影響排版的變數
+    let bgColor, detail, imgSrc;
+    const w = 240, h = 240;
+    
+    switch(name){
+        case "happy":
+            bgColor = colors.bg_happy_dark;
+            detail = emotions[0].detail;
+            imgSrc = emotions[0].img;
+            break;
+        case "angry":
+            bgColor = colors.bg_angry_dark;
+            detail = emotions[1].detail;
+            imgSrc = emotions[1].img;
+            break;
+        case "sad":
+            bgColor = colors.bg_sad_dark;
+            detail = emotions[2].detail;
+            imgSrc = emotions[2].img;
+            break;
+        case "fear":
+            bgColor = colors.bg_fear_dark;
+            detail = emotions[3].detail;
+            imgSrc = emotions[3].img;
+            break;
+        default:
+            console.log("Q1 到 Q2 的資料未正確傳輸！");
+    }
+
     return (
-        <Center flex={1}>
-            <Text>HI</Text>
-            
+        <Center flex={1} bg={bgColor}>
+            <VStack mt={65}>
+                <VStack alignItems="center">
+                    <Image 
+                        width={w}
+                        height={h}
+                        source={{ uri: imgSrc }}
+                        alt={name}
+                    />
+                    <Text color={colors.character} fontSize={30} mx={47} mt={25} mb={40}>哪個詞彙更能形容你的感受？</Text>
+                </VStack>
+                <FlatList 
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    data={detail}
+                    renderItem={ ({ item }) =>  <DetailList detail={item} /> }
+                    keyExtractor={ (item, index) => item + index }
+                />
+            </VStack>
         </Center>
     );
 };

@@ -17,6 +17,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import HomeScreen from "../screens/HomeScreen"
 import Question1Screen from '../screens/Question1Screen';
 import Question2Screen from '../screens/Question2Screen';
+import DiaryScreen from '../screens/DiaryScreen';
 import TheTheme from '../theme';
 
 const Stack = createNativeStackNavigator();
@@ -32,9 +33,10 @@ const Navigation = () => {
 }
 
 /*Stack專區-起點*/
-// 目前順序：首頁 => Q1 => Q2(working)
+// 目前順序：首頁 => Q1 => Q2 => Diary(working)
 const HomeStack = () => {
     const { colors } = useTheme();
+    const navigation = useNavigation();
     
     return (
       <Stack.Navigator
@@ -55,11 +57,18 @@ const HomeStack = () => {
           component={Question1Screen}
           options={() => ({
             headerTransparent: true, // 使 Header 透明化
-
             headerBackTitleVisible: false, // 使 Header 上返回鍵的文字透明化，只適用於 iOS
-            headerTitleStyle: { //避免文字透明化沒起效，將顏色設成與背景相同
-                color:colors.bg_normal 
-            }, 
+            headerTitle: "", //避免文字透明化沒起效，直接不寫標題
+            headerLeft: () => (
+              <TouchableOpacity>
+                <MaterialCommunityIcons
+                  name={"chevron-left"}
+                  size={36}
+                  onPress={() => navigation.goBack()}
+                  style={{ color: colors.character }}
+                />
+              </TouchableOpacity>
+            )
           })}
         />
         <Stack.Screen
@@ -67,11 +76,37 @@ const HomeStack = () => {
           component={Question2Screen}
           options={() => ({
             headerTransparent: true, // 使 Header 透明化
-
             headerBackTitleVisible: false, // 使 Header 上返回鍵的文字透明化，只適用於 iOS
-            headerTitleStyle: { //避免文字透明化沒起效，將顏色設成與背景相同
-                color: colors.bg_normal 
-            },
+            headerTitle: "", //避免文字透明化沒起效，直接不寫標題
+            headerLeft: () => (
+              <TouchableOpacity>
+                <MaterialCommunityIcons
+                  name={"chevron-left"}
+                  size={36}
+                  onPress={() => navigation.goBack()}
+                  style={{ color: colors.character }}
+                />
+              </TouchableOpacity>
+            )
+          })}
+        />
+        <Stack.Screen
+          name="Diary" 
+          component={DiaryScreen}
+          options={() => ({
+            headerTransparent: true, // 使 Header 透明化
+            headerBackTitleVisible: false, // 使 Header 上返回鍵的文字透明化，只適用於 iOS
+            headerTitle: "", //避免文字透明化沒起效，直接不寫標題
+            headerLeft: () => (
+              <TouchableOpacity>
+                <MaterialCommunityIcons
+                  name={"close"}
+                  size={28}
+                  onPress={() => navigation.goBack()}
+                  style={{ color: colors.character }}
+                />
+              </TouchableOpacity>
+            )
           })}
         />
       </Stack.Navigator>
