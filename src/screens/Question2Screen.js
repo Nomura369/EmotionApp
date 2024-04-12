@@ -1,14 +1,16 @@
 import { Center, Text, Image, VStack, FlatList } from "@gluestack-ui/themed";
-import { useTheme, useNavigation } from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
+import { Dimensions } from 'react-native';
 
 import emotionData from "../json/emotions.json";
 import DetailList from "../components/DetailList";
 
 const Question2Screen = ({ route }) => {
     const { colors } = useTheme();
-    const navigation = useNavigation();
 
     const name = route.params; // 從 Q1 傳來的情緒名稱
+    const windowHeight = Dimensions.get('window').height; // 裝置的高
+    const marginY = (windowHeight - 504.5) / 2; // 504.5 為元件的約略總高度
     
     let emotions = emotionData.data;
 
@@ -43,7 +45,7 @@ const Question2Screen = ({ route }) => {
 
     return (
         <Center flex={1} bg={bgColor}>
-            <VStack mt={65}>
+            <VStack mt={marginY}>
                 <VStack alignItems="center">
                     <Image 
                         width={w}
@@ -57,8 +59,9 @@ const Question2Screen = ({ route }) => {
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     data={detail}
-                    renderItem={ ({ item }) =>  <DetailList detail={item} /> }
+                    renderItem={ ({ item }) =>  <DetailList detail={item} name={name} /> }
                     keyExtractor={ (item, index) => item + index }
+                    mb={marginY}
                 />
             </VStack>
         </Center>

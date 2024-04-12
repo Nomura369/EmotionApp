@@ -14,6 +14,7 @@ const TheTheme = {
      bg_fear_dark: "#C2B4D8",
      bg_fear_light: "#DCD1ED",
      character: '#515151',
+     character_sec: "#898989"
    },
  };
 
