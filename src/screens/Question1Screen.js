@@ -8,7 +8,7 @@ const Question1Screen = ({ navigation }) => {
     return (
         <Center flex={1} bg={colors.bg_normal}>
             <VStack>
-                <Text color={colors.character} fontSize={30}>Hi！你今天感覺如何？</Text>
+                <Text color={colors.character} fontSize={30} fontFamily="cjkFonts">Hi！你今天感覺如何？</Text>
                 <EmotionList />
             </VStack>
         </Center>

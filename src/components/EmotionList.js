@@ -17,7 +17,7 @@ const EmotionList = () => {
         <Center>
             <HStack mt={54}>
                 <VStack alignItems="center" mr={40}>
-                    <Text color={colors.character} fontSize={20} mb={8}>喜悅</Text>
+                    <Text fontFamily="cjkFonts" color={colors.character} fontSize={20} mb={8}>喜悅</Text>
                     <Pressable onPress={ () => {navigation.navigate("Q2", emotions[0].name)} }> 
                         <Image
                             width={w}
@@ -28,7 +28,7 @@ const EmotionList = () => {
                     </Pressable>
                 </VStack>
                 <VStack alignItems="center">
-                    <Text color={colors.character} fontSize={20} mb={10}>憤怒</Text>
+                    <Text fontFamily="cjkFonts" color={colors.character} fontSize={20} mb={10}>憤怒</Text>
                     <Pressable onPress={ () => {navigation.navigate("Q2", emotions[1].name)} }>
                         <Image
                             width={w}
@@ -42,7 +42,7 @@ const EmotionList = () => {
 
             <HStack mt={23}>
                 <VStack alignItems="center" mr={40}>
-                    <Text color={colors.character} fontSize={20} mb={8}>哀傷</Text>
+                    <Text fontFamily="cjkFonts" color={colors.character} fontSize={20} mb={8}>哀傷</Text>
                     <Pressable onPress={ () => {navigation.navigate("Q2", emotions[2].name)} }>
                         <Image
                             width={w}
@@ -53,7 +53,7 @@ const EmotionList = () => {
                     </Pressable>
                 </VStack>
                 <VStack alignItems="center">
-                    <Text color={colors.character} fontSize={20} mb={8}>恐懼</Text>
+                    <Text fontFamily="cjkFonts" color={colors.character} fontSize={20} mb={8}>恐懼</Text>
                     <Pressable onPress={ () => {navigation.navigate("Q2", emotions[3].name)} }>
                         <Image
                             width={w}

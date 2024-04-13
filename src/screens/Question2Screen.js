@@ -40,7 +40,7 @@ const Question2Screen = ({ route }) => {
             imgSrc = emotions[3].img;
             break;
         default:
-            console.log("Q1 到 Q2 的資料未正確傳輸！");
+            console.log("Q1 到 Q2 的資料未正確傳輸");
     }
 
     return (
@@ -53,7 +53,12 @@ const Question2Screen = ({ route }) => {
                         source={{ uri: imgSrc }}
                         alt={name}
                     />
-                    <Text color={colors.character} fontSize={30} mx={47} mt={25} mb={40}>哪個詞彙更能形容你的感受？</Text>
+                    <Text 
+                        fontFamily="cjkFonts"
+                        lineHeight={40}
+                        color={colors.character} 
+                        fontSize={30} 
+                        mx={47} mt={25} mb={40}>哪個詞彙更能形容你的感受？</Text>
                 </VStack>
                 <FlatList 
                     horizontal

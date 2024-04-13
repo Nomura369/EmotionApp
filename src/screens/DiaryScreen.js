@@ -11,7 +11,7 @@ const DiaryScreen = ({ route }) => {
     const choice = route.params; // 物件，裡面有 name 和 detail 
 
     const windowWidth = Dimensions.get('window').width; // 裝置的高
-    const textAreaWidth = windowWidth - 56 * 2;
+    const textAreaWidth = windowWidth - 55 * 2;
 
     // 文字顏色設定
     const textColor = choice.detail === "自定義" ? colors.character_sec : colors.character;
@@ -78,16 +78,17 @@ const DiaryScreen = ({ route }) => {
             >
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <VStack alignItems="center">
-                        <Text color={colors.character} fontSize={18} mt={51} mb={17}>{date}</Text>
+                        <Text fontFamily="cjkFonts" color={colors.character} fontSize={18} mt={51} mb={17}>{date}</Text>
                         <ActionButton choice={choice} />
-                        <Text color={textColor} fontSize={24} my={17}>{choice.detail}</Text>
+                        <Text fontFamily="cjkFonts" color={textColor} fontSize={24} my={17}>{choice.detail}</Text>
                         <TextInput
                             width={textAreaWidth}
                             placeholder="從開始這裡輸入吧。"
                             multiline={true}
                             textAlignVertical="top" //統一 iOS 和 Android 的對齊方式
-                            fontSize={18}
+                            fontSize={20}
                             color={colors.character}
+                            style={{ fontFamily: "cjkFonts" }}
                         />
                     </VStack>
                 </ScrollView>

@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugin": [
+      "expo-font",
+        {
+          "fonts": ["./assets/fonts/cjkFonts_allseto_v1.11.ttf"]
+        }
+    ]
   }
 }

@@ -16,9 +16,10 @@ const DetailList = ({ detail, name }) => {
     return (
         <Pressable onPress={ () => {navigation.navigate("Diary", choice)} }>
             <Text 
+                fontFamily="cjkFonts"
                 color={textColor} 
                 fontSize={24} 
-                px={52} pt={18} pb={22} mx={8}
+                px={52} py={22} mx={8}
                 bg={colors.bg_normal} 
                 borderRadius={30}>{detail}</Text>
         </Pressable>
