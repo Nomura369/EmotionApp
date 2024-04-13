@@ -1,13 +1,17 @@
-/*暫時用*/
-import { Center, Text, VStack } from "@gluestack-ui/themed";
+import { Text, VStack, KeyboardAvoidingView, ScrollView, HStack } from "@gluestack-ui/themed";
 import { useTheme } from '@react-navigation/native';
+import { Dimensions, Platform, TextInput } from 'react-native';
 
 import ActionButton from "../components/ActionButton";
+import BottomBar from "../components/BottomBar";
 
 const DiaryScreen = ({ route }) => {
     const { colors } = useTheme(); 
 
     const choice = route.params; // 物件，裡面有 name 和 detail 
+
+    const windowWidth = Dimensions.get('window').width; // 裝置的高
+    const textAreaWidth = windowWidth - 56 * 2;
 
     // 文字顏色設定
     const textColor = choice.detail === "自定義" ? colors.character_sec : colors.character;
@@ -28,7 +32,7 @@ const DiaryScreen = ({ route }) => {
             bgColor = colors.bg_fear_light;
             break;
         default:
-            console.log("無法設定背景色");
+            console.log("無法設定日記頁面的背景色");
     }
 
     // 日期設定
@@ -39,25 +43,25 @@ const DiaryScreen = ({ route }) => {
     let week;
     switch(d.getDay()){
         case 0:
-            week = "一";
+            week = "日";
             break;
         case 1:
-            week = "二";
+            week = "一";
             break;
         case 2:
-            week = "三";
+            week = "二";
             break;
         case 3:
-            week = "四";
+            week = "三";
             break;
         case 4:
-            week = "五";
+            week = "四";
             break;
         case 5:
-            week = "六";
+            week = "五";
             break;
         case 6:
-            week = "日";
+            week = "六";
             break;
         default:
             console.log("今天星期幾？");
@@ -66,13 +70,29 @@ const DiaryScreen = ({ route }) => {
 
 
     return (
-        <Center flex={1} bg={bgColor}>
-            <VStack>
-                <Text color={colors.character} fontSize={18}>{date}</Text>
-                <ActionButton choice={choice} />
-
-            </VStack>
-        </Center>
+        <KeyboardAvoidingView
+                keyboardVerticalOffset={Platform.select({ ios: 0, android: -500 })}
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                flex={1}
+                bg={bgColor}
+            >
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <VStack alignItems="center">
+                        <Text color={colors.character} fontSize={18} mt={51} mb={17}>{date}</Text>
+                        <ActionButton choice={choice} />
+                        <Text color={textColor} fontSize={24} my={17}>{choice.detail}</Text>
+                        <TextInput
+                            width={textAreaWidth}
+                            placeholder="從開始這裡輸入吧。"
+                            multiline={true}
+                            textAlignVertical="top" //統一 iOS 和 Android 的對齊方式
+                            fontSize={18}
+                            color={colors.character}
+                        />
+                    </VStack>
+                </ScrollView>
+                <BottomBar choice={choice} />
+        </KeyboardAvoidingView>
     );
 };
 

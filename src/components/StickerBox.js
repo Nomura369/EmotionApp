@@ -9,19 +9,19 @@ const ImageSource = ({ choice, emotions }) => {
     let imgIndex, imgSrc;
 
     switch(name){
-        case emotions[0].name:
+        case "happy":
             imgIndex = (emotions[0].detail).indexOf(detail);
             imgSrc = emotions[0].img_detail[imgIndex]
             break;
-        case emotions[1].name:
+        case "angry":
             imgIndex = (emotions[1].detail).indexOf(detail);
             imgSrc = emotions[1].img_detail[imgIndex]
             break;
-        case emotions[2].name:
+        case "sad":
             imgIndex = (emotions[2].detail).indexOf(detail);
             imgSrc = emotions[2].img_detail[imgIndex]
             break;
-        case emotions[3].name:
+        case "fear":
             imgIndex = (emotions[3].detail).indexOf(detail);
             imgSrc = emotions[3].img_detail[imgIndex]
             break;
@@ -70,7 +70,7 @@ const StickerBox = ({ choice, emotions }) => {
         <TextSource choice={choice} /> : <ImageSource choice={choice} emotions={emotions}/>;
 
     return (
-        <Center bg={bgColor} borderRadius={30}>
+        <Center width={162} height={150} bg={bgColor} borderRadius={30}>
             {renderContent}
         </Center>
     );
